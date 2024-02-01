@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.sarthakab.jobportal.model.JobPost;
 import com.sarthakab.jobportal.service.JobService;
 
@@ -36,5 +40,44 @@ public class JobController {
 		List<JobPost> jobs = service.getAllJobs();
 		m.addAttribute("jobPosts", jobs);
 		return "viewalljobs";
+	}
+	
+//	@GetMapping("/jobs/getPostDetails/{postId}")
+//	public JobPost getJobPostDetails(@RequestParam("postId") int postId, Model m) {
+//		System.out.println("Also i m in get method");
+//		JobPost jobPost = service.getJobPostDetails(postId); 
+//		m.addAttribute("jobPost", jobPost);
+//		return jobPost;
+//	}
+
+	
+	@GetMapping("/updateJobPost")
+	public String showUpdateJobPage(@RequestParam("postId") Integer postId, Model model) {
+	    // Retrieve job post details based on postId
+		System.out.println("entered in showupdatepage");
+	    JobPost jobPost = service.getJobPostDetails(postId);
+
+	    // Add variables to the model
+	    model.addAttribute("postId", postId);
+	    model.addAttribute("jobPost", jobPost);
+	    System.out.println("Jobpost is setted in model"+jobPost);
+	    // Return the view name
+	    return "updateJobPost";
+	}
+
+	
+	// Handle the form submission for updating the job post
+    @PostMapping("/updateJob")
+    public String updateJobPost(@ModelAttribute JobPost jobPost) {
+        // Implement your logic to update the job post in the database
+        service.updateJobPost(jobPost);
+        // Redirect to the main job post list page or another appropriate page
+        return "redirect:/viewalljobs";
+    }
+	
+	//testing url
+	@GetMapping("/load")
+	public void loadDB() {
+		service.loadDB();
 	}
 }

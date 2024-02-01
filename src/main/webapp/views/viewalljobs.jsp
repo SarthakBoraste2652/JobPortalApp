@@ -15,6 +15,16 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        function updateJobPost(postId) {
+            // Redirect to the update page with the selected job post details
+            window.location.href = "/updateJobPost?postId=" + postId;
+        }
+    
+        // Function for deleteJobPost remains unchanged
+    
+    </script>
+        
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
@@ -68,6 +78,12 @@
                     </div>
                     <div class="card-footer">
                         <!-- Optional footer content -->
+                        <div class="card-footer text-center">
+                            <div>
+                                <button type="button" class="btn btn-primary mr-2" onclick="updateJobPost(${jobPost.postId})">Update</button>
+                                <button type="button" class="btn btn-danger" onclick="deleteJobPost(${jobPost.postId})">Delete</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

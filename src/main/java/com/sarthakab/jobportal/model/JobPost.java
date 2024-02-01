@@ -5,14 +5,18 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 /*@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString*/
 @Component
+@Entity
 public class JobPost {
 
-
+	@Id
 	private int postId;
 	private String postProfile; 
 	private String postDesc;
