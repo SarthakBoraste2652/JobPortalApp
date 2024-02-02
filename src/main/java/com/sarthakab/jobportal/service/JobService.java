@@ -53,4 +53,9 @@ public class JobService {
 	public void updateJobPost(JobPost jobPost) {
 		repo.save(jobPost);		
 	}
+
+	public void deleteJobPost(int id) {
+		repo.deleteById(id);
+		
+	}
 }

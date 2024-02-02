@@ -67,7 +67,7 @@ p {
 			<div class="col-md-6 mb-5">
 				<div class="card bg-warning">
 					<div class="card-body text-center">
-						<h5 class="card-title">View AllJobs</h5>
+						<h5 class="card-title">View All Job Posts</h5>
 						<form action="/viewalljobs" method="get">
 							<!-- Add your form fields here -->
 							<button type="submit" class="btn btn-primary">View</button>
@@ -80,7 +80,7 @@ p {
 			<div class="col-md-6 mb-5">
 				<div class="card">
 					<div class="card-body text-center">
-						<h5 class="card-title">Add Job</h5>
+						<h5 class="card-title">Add Job Post</h5>
 						<form action="/addjob" method="get">
 							<!-- Your form fields go here if needed -->
 
@@ -95,11 +95,11 @@ p {
 			<div class="col-md-6 mb-5">
 				<div class="card">
 					<div class="card-body text-center">
-						<h5 class="card-title">Update Job Post Details</h5>
-						<form action="/updatejob" method="get">
+						<h5 class="card-title">Update Job Post</h5>
+						<form action="/viewalljobs" method="get">
 							<!-- Your form fields go here if needed -->
 
-							<button type="submit" class="btn btn-primary">Update</button>
+							<button type="submit" class="btn btn-primary">Add</button>
 						</form>
 
 					</div>

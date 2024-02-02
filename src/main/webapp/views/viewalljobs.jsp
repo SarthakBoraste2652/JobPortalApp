@@ -21,10 +21,25 @@
             window.location.href = "/updateJobPost?postId=" + postId;
         }
     
-        // Function for deleteJobPost remains unchanged
-    
+        function deleteJobPost(button) {
+    var postId = button.getAttribute('data-postId');
+    console.log("called deletejobpost with id " + postId);
+
+    // Use fetch to send a DELETE request
+    fetch('/deleteJobPost/' + postId, {
+    method: 'DELETE'
+})
+.then(response => {
+    // Reload the page on success
+    location.reload();
+})
+
+}
+
+
+
     </script>
-        
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
@@ -81,7 +96,7 @@
                         <div class="card-footer text-center">
                             <div>
                                 <button type="button" class="btn btn-primary mr-2" onclick="updateJobPost(${jobPost.postId})">Update</button>
-                                <button type="button" class="btn btn-danger" onclick="deleteJobPost(${jobPost.postId})">Delete</button>
+                                <button type="button" class="btn btn-danger" onclick="deleteJobPost(this)" data-postId="${jobPost.postId}">Delete</button>
                             </div>
                         </div>
                     </div>

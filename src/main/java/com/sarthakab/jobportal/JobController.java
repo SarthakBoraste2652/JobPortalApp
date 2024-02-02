@@ -5,14 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sarthakab.jobportal.model.JobPost;
 import com.sarthakab.jobportal.service.JobService;
+
+import jakarta.websocket.server.PathParam;
 
 @Controller
 public class JobController {
@@ -74,6 +78,13 @@ public class JobController {
         // Redirect to the main job post list page or another appropriate page
         return "redirect:/viewalljobs";
     }
+    
+    @DeleteMapping("/deleteJobPost/{postId}")
+    public String deleteJobPost(@PathVariable int postId) {
+        service.deleteJobPost(postId);
+        return "redirect:/viewalljobs";
+    }
+    
 	
 	//testing url
 	@GetMapping("/load")
